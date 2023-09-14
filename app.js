@@ -9,6 +9,8 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-const server = app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+if (!process.env.NETLIFY) {
+    const server = app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+    });
+}
